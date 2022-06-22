@@ -20,13 +20,10 @@ body {
 .cards {
     display: grid;
     grid-template-columns: repeat(4, minmax(300px, 1fr));
+    gap: 50px;
 }
 
-.card {
-    border: solid orangered 5px;
+div.cards > * {
+    border: solid orange 5px;
     padding: 20px;
-}
-
-#read {
-
 }

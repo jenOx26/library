@@ -1,4 +1,26 @@
+let title = document.getElementById('title').value;
+let author = document.getElementById('author').value;
+let pages = document.getElementById('pages').value;
+let read = document.getElementById('read').checked;
+let addBtn = document.getElementById('addBtn').addEventListener('click', getBookFromInput);
+let cards = document.querySelector('.cards');
+let card = document.querySelector('.card');
+
 let myLibrary = [];
+
+function getBookFromInput() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    let read;
+    if (document.getElementById('read').checked == true) {
+        read = 'Yep!';
+    } else {
+        read = 'Not yet!';
+    }
+    const newBook = new Book(title, author, pages, read);
+    newBook.info();
+}
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -6,26 +28,21 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
-        book = {title, author, pages, read};
+        let book = `Title: ${title}\nAuthor: ${author}\nPages: ${pages}\nRead? ${read}`;
         addBookToLibrary(book);
-        return {title, author, pages, read};
     }
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(book) {
     myLibrary.push(book);
+    displayBooks();
 }
 
 function displayBooks() {
     let books = myLibrary;
-    for (const book of books) {
+    for (let book of books) {
+        let card = document.createElement('div')
+        cards.appendChild(card).innerText = book;
         console.log(book);
     }
 }
-
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', 'not read yet');
-theHobbit.info();
-const blah = new Book ('blah', 'blah', '22', 'read');
-blah.info();
-console.log(myLibrary);
-displayBooks();
