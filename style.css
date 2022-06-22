@@ -26,4 +26,5 @@ body {
 div.cards > * {
     border: solid orange 5px;
     padding: 20px;
+    font-size: 2rem;
 }

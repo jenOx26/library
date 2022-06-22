@@ -4,7 +4,7 @@ let pages = document.getElementById('pages').value;
 let read = document.getElementById('read').checked;
 let addBtn = document.getElementById('addBtn').addEventListener('click', getBookFromInput);
 let cards = document.querySelector('.cards');
-let card = document.querySelector('.card');
+let card;
 
 let myLibrary = [];
 
@@ -39,10 +39,17 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks() {
+    removeCards()
     let books = myLibrary;
     for (let book of books) {
-        let card = document.createElement('div')
+        let card = document.createElement('div');
         cards.appendChild(card).innerText = book;
         console.log(book);
+    }
+}
+
+function removeCards() {
+    while (cards.lastChild) {
+        cards.removeChild(cards.lastChild);
     }
 }
