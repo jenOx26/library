@@ -11,16 +11,28 @@
 <body>
     <div class="container">
         <h1>Library</h1>
-        <div class="newBook">
-            <label for="title">Title:</label>
-            <input id="title" type="text">
-            <label for="author">Author:</label>
-            <input id="author" type="text">
-            <label for="pages">Pages:</label>
-            <input id="pages" type="number">
-            <label for="read">Read?</label>
-            <input id="read" type="checkbox">
-            <button id="addBtn">Add Book</button>
+        <button id="openModal">Add Book</button>
+        <div class="modal" id="myModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="title">
+                    <label for="title">Title:</label>
+                    <input id="title" type="text">
+                </div>
+                <div class="author">
+                    <label for="author">Author:</label>
+                    <input id="author" type="text">
+                </div>
+                <div class="pages">
+                    <label for="pages">Pages:</label>
+                    <input id="pages" type="number">
+                </div>
+                <div class="read">
+                    <label for="read">Read?</label>
+                    <input id="read" type="checkbox">
+                </div>
+                <button id="addBtn" onclick="getBookFromInput()">Add Book</button>
+            </div>
         </div>
         <div class="cards"></div>
     </div>

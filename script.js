@@ -1,10 +1,28 @@
-let title = document.getElementById('title').value;
-let author = document.getElementById('author').value;
-let pages = document.getElementById('pages').value;
-let read = document.getElementById('read').checked;
-let addBtn = document.getElementById('addBtn').addEventListener('click', getBookFromInput);
+//let title = document.getElementById('title').value;
+//let author = document.getElementById('author').value;
+//let pages = document.getElementById('pages').value;
+//let read = document.getElementById('read').checked;
+let addBtn = document.getElementById('addBtn');
 let cards = document.querySelector('.cards');
-let card;
+//.addEventListener('click', getBookFromInput);
+
+let modal = document.getElementById("myModal");
+let openModal = document.getElementById("openModal");
+let span = document.getElementsByClassName("close")[0];
+
+openModal.onclick = function() {
+  modal.style.display = "grid";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 let myLibrary = [];
 
