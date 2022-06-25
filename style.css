@@ -5,12 +5,23 @@
 
 body {
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
 .container {
-    display: flex;
+    display:flex;
     flex-direction: column;
     gap: 50px;
+    background-color: whitesmoke;
+    align-items: center;
+}
+
+.header {
+    background-color: white;
+    border-bottom: 5px whitesmoke inset;
+    padding-left: 30px;
 }
 
 input {
@@ -29,28 +40,68 @@ input {
     gap: 50px;
 }
 
-div.cards > * {
+.card {
     border: solid orangered 5px;
     background-color: orange;
     padding: 20px;
     font-size: 2rem;
     font-weight: 500;
-}
+    display: flex;
+    flex-direction: column;
+} 
 
 #openModal, #addBtn {
     border: solid orangered;
-    border-radius: 10px;
     background-color: orangered;
-    font-weight: 700;
-    font-size: 1.25rem;
     color: white;
     padding: 10px;
-    max-width: 200px;
 }
 
 #addBtn {
     justify-self: center;
     margin-top: 10px;
+    border-radius: 10px;
+    max-width: 200px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#openModal {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;;
+}
+
+#removeBtn {
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-top: 15px;
+    margin-left: 15px;
+    background-color: #fefefe;
+    color: black;
+    border: solid black 2px;
+    font-weight: 600;
+}
+
+.readBtn {
+    background-color: y;
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-start;
+    margin-left: 0px;
+    margin-top: 15px;
+    color: black;
+    border: solid black 2px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    max-width: 200px;
 }
 
 .modal {

@@ -1,7 +1,3 @@
-//let title = document.getElementById('title').value;
-//let author = document.getElementById('author').value;
-//let pages = document.getElementById('pages').value;
-//let read = document.getElementById('read').checked;
 let addBtn = document.getElementById('addBtn');
 let cards = document.querySelector('.cards');
 //.addEventListener('click', getBookFromInput);
@@ -30,12 +26,6 @@ function getBookFromInput() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    let read;
-    if (document.getElementById('read').checked == true) {
-        read = 'Yep!';
-    } else {
-        read = 'Not yet!';
-    }
     const newBook = new Book(title, author, pages, read);
     newBook.info();
 }
@@ -46,7 +36,7 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
-        let book = `Title: ${title}\nAuthor: ${author}\nPages: ${pages}\nRead? ${read}`;
+        let book = `Title: ${title}\nAuthor: ${author}\nPages: ${pages}`
         addBookToLibrary(book);
     }
 }
@@ -58,11 +48,42 @@ function addBookToLibrary(book) {
 
 function displayBooks() {
     removeCards()
+    
+    let read;
+    if (document.getElementById('read').checked == true) {
+        read = 'Read!';
+    } else {
+        read = 'Not read yet!';
+    }
+
     let books = myLibrary;
     for (let book of books) {
         let card = document.createElement('div');
         cards.appendChild(card).innerText = book;
-        console.log(book);
+        card.classList.add('card');
+        card.setAttribute('id', myLibrary.indexOf(book));
+
+        let readBtn = document.createElement('button');
+        card.appendChild(readBtn).innerText = read;
+        readBtn.classList.add('readBtn');
+        readBtn.setAttribute('id', 'readBtn')
+        readBtn.onclick = function() {
+            if (readBtn.innerText === "Read!") {
+                readBtn.innerText = "Not read yet!";
+              } else {
+                readBtn.innerHTML = "Read!";
+              }
+        }
+        
+        let removeBtn = document.createElement('button');
+        card.appendChild(removeBtn).innerText = 'Remove';
+        removeBtn.classList.add('removeBtn')
+        removeBtn.setAttribute('id', 'removeBtn');
+
+        removeBtn.onclick = function() {
+            myLibrary.splice(myLibrary.indexOf(book),1);
+            displayBooks();
+        }
     }
 }
 
