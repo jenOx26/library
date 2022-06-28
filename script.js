@@ -1,16 +1,15 @@
 let addBtn = document.getElementById('addBtn');
 let cards = document.querySelector('.cards');
-//.addEventListener('click', getBookFromInput);
 
 let modal = document.getElementById("myModal");
 let openModal = document.getElementById("openModal");
-let span = document.getElementsByClassName("close")[0];
+let closeModal = document.getElementsByClassName("closeModal")[0];
 
 openModal.onclick = function() {
   modal.style.display = "grid";
 }
 
-span.onclick = function() {
+closeModal.onclick = function() {
   modal.style.display = "none";
 }
 
@@ -26,6 +25,7 @@ function getBookFromInput() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
     const newBook = new Book(title, author, pages, read);
     newBook.info();
 }
@@ -36,35 +36,27 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
-        let book = `Title: ${title}\nAuthor: ${author}\nPages: ${pages}`
-        addBookToLibrary(book);
+        let book = `${title}\nby ${author}\n${pages} pages`
+        addBookToLibrary(book, read);
     }
 }
 
-function addBookToLibrary(book) {
-    myLibrary.push(book);
+function addBookToLibrary(book, read) {
+    myLibrary.push({info: book, read: read});
     displayBooks();
 }
 
 function displayBooks() {
     removeCards()
-    
-    let read;
-    if (document.getElementById('read').checked == true) {
-        read = 'Read!';
-    } else {
-        read = 'Not read yet!';
-    }
-
     let books = myLibrary;
     for (let book of books) {
         let card = document.createElement('div');
-        cards.appendChild(card).innerText = book;
+        cards.appendChild(card).innerText = book.info;
         card.classList.add('card');
         card.setAttribute('id', myLibrary.indexOf(book));
 
         let readBtn = document.createElement('button');
-        card.appendChild(readBtn).innerText = read;
+        card.appendChild(readBtn).innerText = book.read ? 'Read!' : 'Not read yet!';
         readBtn.classList.add('readBtn');
         readBtn.setAttribute('id', 'readBtn')
         readBtn.onclick = function() {
