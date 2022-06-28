@@ -58,7 +58,6 @@ function displayBooks() {
         let readBtn = document.createElement('button');
         card.appendChild(readBtn).innerText = book.read ? 'Read!' : 'Not read yet!';
         readBtn.classList.add('readBtn');
-        readBtn.setAttribute('id', 'readBtn')
         readBtn.onclick = function() {
             if (readBtn.innerText === "Read!") {
                 readBtn.innerText = "Not read yet!";
@@ -70,7 +69,6 @@ function displayBooks() {
         let removeBtn = document.createElement('button');
         card.appendChild(removeBtn).innerText = 'Remove';
         removeBtn.classList.add('removeBtn')
-        removeBtn.setAttribute('id', 'removeBtn');
 
         removeBtn.onclick = function() {
             myLibrary.splice(myLibrary.indexOf(book),1);

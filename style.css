@@ -78,7 +78,7 @@ input {
     margin-top: 15px;;
 }
 
-#removeBtn {
+.removeBtn {
     display: flex;
     justify-self: flex-end;
     align-self: flex-end;
